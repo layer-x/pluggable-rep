@@ -83,9 +83,9 @@ func (c *CellState) MatchRootFS(rootfs string) bool {
 }
 
 type Resources struct {
-	MemoryMB   int32
-	DiskMB     int32
-	Containers int
+	MemoryMB   int32 `json:"MemoryMB"`
+	DiskMB     int32 `json:"DiskMB"`
+	Containers int `json:"Containers"`
 }
 
 func NewResources(memoryMb, diskMb int32, containerCount int) Resources {
@@ -110,9 +110,9 @@ func (r *Resources) ComputeScore(total *Resources) float64 {
 }
 
 type Resource struct {
-	MemoryMB int32
-	DiskMB   int32
-	RootFs   string
+	MemoryMB int32 `json:"MemoryMB"`
+	DiskMB   int32 `json:"DiskMB"`
+	RootFs   string `json:"RootFs"`
 }
 
 func NewResource(memoryMb, diskMb int32, rootfs string) Resource {
@@ -145,9 +145,9 @@ func (lrp *LRP) Copy() LRP {
 }
 
 type Task struct {
-	TaskGuid string
-	Domain   string
-	Resource
+	TaskGuid string `json:"TaskGuid"`
+	Domain   string `json:"Domain"`
+	Resource `json:"Resource"`
 }
 
 func NewTask(guid string, domain string, res Resource) Task {

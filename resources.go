@@ -148,10 +148,11 @@ type Task struct {
 	TaskGuid string `json:"TaskGuid"`
 	Domain   string `json:"Domain"`
 	Resource `json:"Resource"`
+	Tags	[]string `json:"Tags"`
 }
 
-func NewTask(guid string, domain string, res Resource) Task {
-	return Task{guid, domain, res}
+func NewTask(guid string, domain string, res Resource, tags ...string) Task {
+	return Task{guid, domain, res, tags}
 }
 
 func (task *Task) Identifier() string {
